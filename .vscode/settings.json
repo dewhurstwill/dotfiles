@@ -1,0 +1,17 @@
+{
+    "azureFunctions.deploySubpath": ".",
+    "azureFunctions.postDeployTask": "npm install",
+    "azureFunctions.projectLanguage": "JavaScript",
+    "azureFunctions.projectRuntime": "~3",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.preDeployTask": "npm prune",
+    "workbench.colorTheme": "Just Black",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontFamily": "Anonymous Pro",
+    "editor.snippetSuggestions": "top",
+    "editor.minimap.enabled": false,
+    "editor.formatOnPaste": false,
+    "editor.lineHeight": 0,
+    "editor.fontSize": 18,
+    "editor.tabSize": 2,
+}
