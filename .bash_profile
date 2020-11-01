@@ -50,6 +50,7 @@ alias nid='npm i -D'
 alias l="ls" # List files in current directory
 alias ll="ls -la" # List all files in current directory in long list format
 alias o="open ." # Open the current directory in Finder
+alias dev='cd ~/Documents/Dev/Projects' # Quick cd alias for my dev folder
 
 # -------
 # Command Replacement Aliases
