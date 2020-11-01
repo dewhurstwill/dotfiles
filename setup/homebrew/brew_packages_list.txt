@@ -6,11 +6,13 @@ azure-cli
 bash
 bat
 checkov
+cowsay
 curl
 deno
 docker
 drawio
 firefox
+fortune
 go
 google-chrome
 helm
@@ -39,6 +41,7 @@ tldr
 tmux
 tokei
 tty-clock
+vcprompt
 visual-studio-code
 watch
 yarn
