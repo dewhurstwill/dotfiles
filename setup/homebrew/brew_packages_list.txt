@@ -3,6 +3,7 @@ archey
 aws-shell
 awscli
 azure-cli
+bash
 bat
 checkov
 curl
