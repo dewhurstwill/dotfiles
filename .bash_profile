@@ -42,18 +42,29 @@ function mkcd()
 # -------
 alias 🍺="git checkout -b drunk"
 alias a='code .'
+alias bp='bat ~/.bash_profile'
+alias editbp='nvim ~/.bash_profile'
+alias c='code .'
+alias cls='clear'
+alias reveal-md="reveal-md --theme night --highlight-theme hybrid --port 1337"
 alias ns='npm start'
 alias nsd='npm run startDev'
 alias nr='npm run'
 alias nis='npm i -S'
-alias nid='npm i -D'
 alias l="ls" # List files in current directory
-alias ll="ls -la" # List all files in current directory in long list format
+alias ll="ls -al" # List all files in current directory in long list format
 alias o="open ." # Open the current directory in Finder
-alias dev='cd ~/Documents/Dev/Projects' # Quick cd alias for my dev folder
+alias dev='cd ~/Documents/Dev/Projects'
+alias devc='dev && clear'
+alias h='cd ~/'
+alias hc='h && clear'
+alias home='h'
 
 # -------
 # Command Replacement Aliases
 # -------
 
 alias cat=bat
+alias vi=nvim
+alias grep=rg
+  
