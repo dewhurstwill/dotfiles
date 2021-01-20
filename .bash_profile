@@ -56,6 +56,7 @@ alias ll="ls -al" # List all files in current directory in long list format
 alias o="open ." # Open the current directory in Finder
 alias dev='cd ~/Documents/Dev/Projects'
 alias devc='dev && clear'
+alias blog='dev && cd _MyProjects/blog/_posts'
 alias h='cd ~/'
 alias hc='h && clear'
 alias home='h'
