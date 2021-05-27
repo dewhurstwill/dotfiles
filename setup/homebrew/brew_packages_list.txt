@@ -39,6 +39,7 @@ slack
 terraform
 tldr
 tmux
+tree
 tokei
 tty-clock
 vcprompt
