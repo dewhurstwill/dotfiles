@@ -32,9 +32,55 @@ PS1="$EMOJI >"
 
 fortune | cowsay -f tux
 
+# Open url in chrome from command line
+function chrome() 
+{
+    URL=$1
+    if [[ $1 != http* ]] ; then
+        URL="http://$1"
+    fi
+    /usr/bin/open -a '/Applications/Google Chrome.app' "$URL"
+}
+
+# Open url in safari from command line
+function safari()
+{
+    URL=$1
+    if [[ $1 != http* ]] ; then
+        URL="http://$1"
+    fi
+    /usr/bin/open -a '/Applications/Safari.app' "$URL"
+}
+
+# Google things from the command line
+function google() {
+    QUERY=$( rawurlencode "$*" )
+    safari "https://www.google.co.uk/search?client=safari&rls=en&q=$QUERY&ie=UTF-8&oe=UTF-8"
+}
+
+# URL encoding function taken from https://stackoverflow.com/a/10660730
+function rawurlencode()
+{
+  local string="${1}"
+  local strlen=${#string}
+  local encoded=""
+  local pos c o
+
+  for (( pos=0 ; pos<strlen ; pos++ )); do
+     c=${string:$pos:1}
+     case "$c" in
+        [-_.~a-zA-Z0-9] ) o="${c}" ;;
+        * )               printf -v o '%%%02x' "'$c"
+     esac
+     encoded+="${o}"
+  done
+  echo "${encoded}"    # You can either set a return variable (FASTER)
+  REPLY="${encoded}"   #+or echo the result (EASIER)... or both... :p
+}
+
 function mkcd()
 {
-	mkdir $1 && cd $1
+  mkdir $1 && cd $1
 }
 
 # -------
@@ -60,6 +106,35 @@ alias blog='dev && cd _MyProjects/blog/_posts'
 alias h='cd ~/'
 alias hc='h && clear'
 alias home='h'
+alias dropdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
+alias tf='terraform'
+alias tree="tree -C"
+
+# -------
+# Git Aliases
+# -------
+
+alias ga="git add ."
+alias gb="git branch"
+alias gc="git commit"
+alias gd="git diff"
+alias gl="git log"
+alias gp="git push -u"
+# The --force-with-lease option is like --force but will not overwrite other people's changes.
+alias gpf="git push --force-with-lease"
+alias gs="git status"
+alias rebasem="git fetch --all && git rebase origin/master"
+
+# -------
+# Terraform Aliases
+# -------
+
+alias tfi="terraform init"
+alias tfp="terraform plan"
+alias tfa="terraform apply"
+alias tfv="terraform validate"
+alias tff="terraform fmt"
+alias tfim="terraform import"
 
 # -------
 # Command Replacement Aliases
