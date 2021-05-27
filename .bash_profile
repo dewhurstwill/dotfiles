@@ -32,6 +32,21 @@ PS1="$EMOJI >"
 
 fortune | cowsay -f tux
 
+function deviceauth() {
+  # Requires https://github.com/dewhurstwill/tamper-monkey-scripts/blob/main/Scripts/Microsoft/device-auth-injector.js
+  URL="https://login.microsoftonline.com/common/oauth2/deviceauth?otp=$1"
+  edge "$URL"
+}
+
+# Open url in chromium edge from command line
+function edge() {
+    URL=$1
+    if [[ $1 != http* ]] ; then
+        URL="https://$1"
+    fi
+    /usr/bin/open -a '/Applications/Microsoft Edge.app' "$URL"
+}
+
 # Open url in chrome from command line
 function chrome() 
 {
