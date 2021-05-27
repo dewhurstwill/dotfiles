@@ -39,9 +39,10 @@ slack
 terraform
 tldr
 tmux
-tree
 tokei
+tree
 tty-clock
+typescript
 vcprompt
 visual-studio-code
 watch
