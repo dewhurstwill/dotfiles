@@ -123,6 +123,7 @@ alias hc='h && clear'
 alias home='h'
 alias dropdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 alias tf='terraform'
+alias tfdoc='terraform-docs'
 alias tree="tree -C"
 
 # -------
@@ -158,4 +159,3 @@ alias tfim="terraform import"
 alias cat=bat
 alias vi=nvim
 alias grep=rg
-  
