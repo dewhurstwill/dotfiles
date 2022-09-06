@@ -74,6 +74,8 @@ nettle
 nghttp2
 node
 node@14
+node@16
+nvm
 oniguruma
 openjdk@11
 openldap
