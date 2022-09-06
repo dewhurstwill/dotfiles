@@ -1,7 +1,10 @@
-shopt -s autocd
 shopt -s histappend
 
-export PATH=$PATH:$HOME/bin
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH=$PATH:$(brew --prefix)/bin:$(brew --prefix)/sbin:$HOME/bin
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export HISTSIZE=5000
 export HISTFILESIZE=10000
@@ -23,7 +26,10 @@ print_before_the_prompt () {
     dir=$PWD
     home=$HOME
     dir=${dir/"$HOME"/"~"}
-    printf "\n $txtred%s: $bldpur%s $txtgrn%s\n$txtrst" "$(hostname)" "$dir" "$(vcprompt)"
+    workspace=$(terraform workspace show)
+    workspaceTxt=''
+    if [[ "$workspace" != "default" ]]; then workspaceTxt="[TF Workspace: $workspace]"; fi
+    printf "\n $txtred%s: $bldpur%s $txtgrn%s $bldgrn%s \n$txtrst" "$(hostname)" "$dir" "$(vcprompt)" "$workspaceTxt"
 }
 
 PROMPT_COMMAND=print_before_the_prompt
@@ -48,7 +54,7 @@ function edge() {
 }
 
 # Open url in chrome from command line
-function chrome() 
+function chrome()
 {
     URL=$1
     if [[ $1 != http* ]] ; then
@@ -65,6 +71,11 @@ function safari()
         URL="http://$1"
     fi
     /usr/bin/open -a '/Applications/Safari.app' "$URL"
+}
+
+function htunnel()
+{
+    ssh -p 25567 -N -L $3:$1:$2 user@redacted
 }
 
 # Google things from the command line
@@ -98,6 +109,23 @@ function mkcd()
   mkdir $1 && cd $1
 }
 
+function tfrc()
+{
+  echo "credentials \"app.terraform.io\" {" > ~/.terraformrc
+  echo '  token = "TFCLOUD TOKEN GOES HERE"' >> ~/.terraform
+rc
+  echo "}" >> ~/.terraformrc
+}
+
+tfc-new-workspace()
+{
+  data='{ "data": { "attributes": { "name": "WORKSPACE-HERE", "resource-count": 0, "updated-at": "2017-11-29T19:18:09.976Z" },
+"type": "workspaces" }}'
+  curl --header "Authorization: Bearer TFCLOUD TOKEN GOES HERE" --header "Content-Type: application/vnd.api+json" --request POST --data "$data" https://app.terraform.io/api/v2/organizatio
+ns/TF CLOUD ORG GOES HERE/workspaces
+}
+
+
 # -------
 # Aliases
 # -------
@@ -115,7 +143,7 @@ alias nis='npm i -S'
 alias l="ls" # List files in current directory
 alias ll="ls -al" # List all files in current directory in long list format
 alias o="open ." # Open the current directory in Finder
-alias dev='cd ~/Documents/Dev/Projects'
+alias dev='cd ~/Documents/Projects'
 alias devc='dev && clear'
 alias blog='dev && cd _MyProjects/blog/_posts'
 alias h='cd ~/'
@@ -125,6 +153,15 @@ alias dropdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 alias tf='terraform'
 alias tfdoc='terraform-docs'
 alias tree="tree -C"
+alias pihole-connect="docker exec -it pihole bash"
+alias create-bation="kubectl create -f https://gist.githubusercontent.com/dewhurstwill/14cd4517e77322b380e10acd31067d65/raw/150
+8dbc5b59fd812738ad1ae0476342c656a9068/bastion.yaml && sleep 10 && kubectl exec -it bastion -- /bin/bash"
+alias new-bastion="kubectl create -f https://gist.githubusercontent.com/dewhurstwill/14cd4517e77322b380e10acd31067d65/raw/1508d
+bc5b59fd812738ad1ae0476342c656a9068/bastion.yaml && sleep 10 && kubectl exec -it bastion -- /bin/bash"
+alias connect-bastion="kubectl exec -it bastion -- /bin/bash"
+alias bastion="kubectl apply -f https://gist.githubusercontent.com/dewhurstwill/14cd4517e77322b380e10acd31067d65/raw/1508dbc5b5
+9fd812738ad1ae0476342c656a9068/bastion.yaml && sleep 10 && kubectl exec -it bastion -- /bin/bash"
+alias terratest="go test -v -timeout 90m"
 
 # -------
 # Git Aliases
