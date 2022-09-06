@@ -11,6 +11,7 @@ brotli
 c-ares
 checkov
 cocoapods
+copyclip
 coreutils
 cowsay
 curl
@@ -31,6 +32,7 @@ guile
 helm
 heroku
 heroku-node
+hiddenbar
 htop
 hugo
 icu4c
