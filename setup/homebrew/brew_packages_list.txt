@@ -116,3 +116,5 @@ xz
 yarn
 yq
 zstd
+shottr
+imageoptim
