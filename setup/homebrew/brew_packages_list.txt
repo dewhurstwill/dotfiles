@@ -89,6 +89,7 @@ pcre2
 pipenv
 pkg-config
 postman
+derailed/popeye/popeye
 powershell
 python-tabulate
 python@3.8
