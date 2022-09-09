@@ -29,6 +29,7 @@ gnutls
 go
 google-chrome
 guile
+k9s
 helm
 heroku
 heroku-node
