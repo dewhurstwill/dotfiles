@@ -124,3 +124,6 @@ xz
 yarn
 yq
 zstd
+links
+youtube-dl
+task
