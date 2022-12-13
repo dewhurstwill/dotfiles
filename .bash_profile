@@ -143,17 +143,13 @@ alias nis='npm i -S'
 alias l="ls" # List files in current directory
 alias ll="ls -al" # List all files in current directory in long list format
 alias o="open ." # Open the current directory in Finder
-alias dev='cd ~/Documents/Projects'
+alias dev='cd ~/Dev'
 alias devc='dev && clear'
-alias blog='dev && cd _MyProjects/blog/_posts'
 alias h='cd ~/'
 alias hc='h && clear'
 alias home='h'
 alias dropdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
-alias tf='terraform'
-alias tfdoc='terraform-docs'
 alias tree="tree -C"
-alias pihole-connect="docker exec -it pihole bash"
 alias create-bation="kubectl create -f https://gist.githubusercontent.com/dewhurstwill/14cd4517e77322b380e10acd31067d65/raw/150
 8dbc5b59fd812738ad1ae0476342c656a9068/bastion.yaml && sleep 10 && kubectl exec -it bastion -- /bin/bash"
 alias new-bastion="kubectl create -f https://gist.githubusercontent.com/dewhurstwill/14cd4517e77322b380e10acd31067d65/raw/1508d
@@ -161,22 +157,24 @@ bc5b59fd812738ad1ae0476342c656a9068/bastion.yaml && sleep 10 && kubectl exec -it
 alias connect-bastion="kubectl exec -it bastion -- /bin/bash"
 alias bastion="kubectl apply -f https://gist.githubusercontent.com/dewhurstwill/14cd4517e77322b380e10acd31067d65/raw/1508dbc5b5
 9fd812738ad1ae0476342c656a9068/bastion.yaml && sleep 10 && kubectl exec -it bastion -- /bin/bash"
-alias terratest="go test -v -timeout 90m"
+
 
 # -------
 # Git Aliases
 # -------
 
-alias ga="git add ."
-alias gb="git branch"
-alias gc="git commit"
-alias gd="git diff"
-alias gl="git log"
-alias gp="git push -u"
-# The --force-with-lease option is like --force but will not overwrite other people's changes.
-alias gpf="git push --force-with-lease"
-alias gs="git status"
-alias rebasem="git fetch --all && git rebase origin/master"
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add -A'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gd='git diff'
+alias gi='git init'
+alias gl='git log'
+alias gp='git pull'
+alias gpsh='git push'
+alias gss='git status -s'
+alias gs='echo ""; echo "*********************************************"; echo -e "   DO NOT FORGET TO PULL BEFORE COMMITTING"; echo "*********************************************"; echo ""; git status'
 
 # -------
 # Terraform Aliases
@@ -188,6 +186,9 @@ alias tfa="terraform apply"
 alias tfv="terraform validate"
 alias tff="terraform fmt"
 alias tfim="terraform import"
+alias tf='terraform'
+alias tfdoc='terraform-docs'
+alias terratest="go test -v -timeout 90m"
 
 # -------
 # Command Replacement Aliases
