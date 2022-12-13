@@ -157,7 +157,7 @@ bc5b59fd812738ad1ae0476342c656a9068/bastion.yaml && sleep 10 && kubectl exec -it
 alias connect-bastion="kubectl exec -it bastion -- /bin/bash"
 alias bastion="kubectl apply -f https://gist.githubusercontent.com/dewhurstwill/14cd4517e77322b380e10acd31067d65/raw/1508dbc5b5
 9fd812738ad1ae0476342c656a9068/bastion.yaml && sleep 10 && kubectl exec -it bastion -- /bin/bash"
-
+alias npkill="npx npkill"
 
 # -------
 # Git Aliases
