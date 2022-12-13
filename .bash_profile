@@ -197,3 +197,56 @@ alias terratest="go test -v -timeout 90m"
 alias cat=bat
 alias vi=nvim
 alias grep=rg
+
+# -------
+# Taskmgr
+# -------
+
+function thelp()
+{
+  echo "tadd something"
+  echo "tlist"
+  echo "tduetoday"
+  echo "tdueweek"
+  echo "tburndown"
+  echo "taddhigh"
+  echo "taddmid"
+  echo "taddlow"
+  echo "tcomplete"
+  echo "tdelete"
+}
+
+function tadd()
+{
+  task add $1
+}
+
+alias tlist="task list"
+alias tduetoday="task list due.before:eod"
+alias tdueweek="task list due.before:eow"
+alias tburndown="task burndown.daily"
+
+function taddhigh()
+{
+  task add $1 priority:H
+}
+
+function taddmid()
+{
+  task add $1 priority:M
+}
+
+function taddlow()
+{
+  task add $1 priority:L
+}
+
+function tcomplete()
+{
+  task $1 done
+}
+
+function tdelete()
+{
+  task $1 delete
+}
